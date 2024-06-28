@@ -1,0 +1,12 @@
+package com.example.kotlin25
+
+import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.SpringBootTest
+
+@SpringBootTest
+class Kotlin25ApplicationTests {
+
+    @Test
+    fun contextLoads() {
+    }
+}
