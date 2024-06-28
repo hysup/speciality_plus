@@ -8,7 +8,7 @@ import com.example.kotlin25.comment.repository.CommentRepository
 import com.example.kotlin25.config.sercurity.UserPrincipal
 import com.example.kotlin25.global.Type.ModelNotFoundException
 import com.example.kotlin25.post.repository.PostRepository
-import com.example.kotlin25.repository.MemberRepository
+import com.example.kotlin25.member.repository.MemberRepository
 import jakarta.transaction.Transactional
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.core.context.SecurityContextHolder

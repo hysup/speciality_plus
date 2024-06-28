@@ -1,12 +1,12 @@
-package com.example.kotlin25.controller
+package com.example.kotlin25.member.controller
 
-import com.example.kotlin25.controller.dto.LoginRequest
-import com.example.kotlin25.controller.dto.LoginResponse
-import com.example.kotlin25.controller.dto.SignUpRequest
-import com.example.kotlin25.repository.MemberRepository
+import com.example.kotlin25.member.dto.LoginRequest
+import com.example.kotlin25.member.dto.LoginResponse
+import com.example.kotlin25.member.dto.SignUpRequest
+import com.example.kotlin25.member.repository.MemberRepository
 import com.example.kotlin25.config.jwt.JwtCookieManager
 import com.example.kotlin25.config.jwt.JwtPlugin
-import com.example.kotlin25.service.MemberService
+import com.example.kotlin25.member.service.MemberService
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

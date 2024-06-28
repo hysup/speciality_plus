@@ -2,7 +2,7 @@ package com.example.kotlin25.comment.model
 
 import com.example.kotlin25.comment.dto.CommentResponse
 import com.example.kotlin25.post.model.Post
-import com.example.kotlin25.repository.model.Member
+import com.example.kotlin25.member.repository.model.Member
 import jakarta.persistence.*
 import java.time.ZonedDateTime
 

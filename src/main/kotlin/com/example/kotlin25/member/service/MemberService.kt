@@ -1,10 +1,10 @@
-package com.example.kotlin25.service
+package com.example.kotlin25.member.service
 
-import com.example.kotlin25.controller.dto.LoginRequest
-import com.example.kotlin25.controller.dto.LoginResponse
-import com.example.kotlin25.controller.dto.SignUpRequest
-import com.example.kotlin25.repository.MemberRepository
-import com.example.kotlin25.repository.model.Member
+import com.example.kotlin25.member.dto.LoginRequest
+import com.example.kotlin25.member.dto.LoginResponse
+import com.example.kotlin25.member.dto.SignUpRequest
+import com.example.kotlin25.member.repository.MemberRepository
+import com.example.kotlin25.member.repository.model.Member
 import com.example.kotlin25.config.jwt.JwtPlugin
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.security.crypto.password.PasswordEncoder

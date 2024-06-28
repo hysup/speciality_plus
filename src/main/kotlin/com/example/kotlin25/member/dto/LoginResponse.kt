@@ -1,4 +1,4 @@
-package com.example.kotlin25.controller.dto
+package com.example.kotlin25.member.dto
 
 data class LoginResponse(
     val accessToken:String

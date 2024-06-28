@@ -1,7 +1,7 @@
 package com.example.kotlin25.like.model
 
 import com.example.kotlin25.post.model.Post
-import com.example.kotlin25.repository.model.Member
+import com.example.kotlin25.member.repository.model.Member
 import jakarta.persistence.*
 
 
@@ -18,7 +18,7 @@ class Like (
     val author: Member,
 
 
-){
+    ){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null

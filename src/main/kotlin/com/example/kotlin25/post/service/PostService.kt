@@ -7,7 +7,7 @@ import com.example.kotlin25.post.dto.PostResponse
 import com.example.kotlin25.post.dto.UpdatePostRequest
 import com.example.kotlin25.post.model.Post
 import com.example.kotlin25.post.repository.PostRepository
-import com.example.kotlin25.repository.MemberRepository
+import com.example.kotlin25.member.repository.MemberRepository
 import jakarta.persistence.EntityNotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.core.context.SecurityContextHolder

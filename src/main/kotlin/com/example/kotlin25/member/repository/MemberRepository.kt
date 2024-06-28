@@ -1,6 +1,6 @@
-package com.example.kotlin25.repository
+package com.example.kotlin25.member.repository
 
-import com.example.kotlin25.repository.model.Member
+import com.example.kotlin25.member.repository.model.Member
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface MemberRepository : JpaRepository<Member, Long> {

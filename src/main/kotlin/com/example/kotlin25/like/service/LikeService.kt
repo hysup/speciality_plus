@@ -5,7 +5,7 @@ import com.example.kotlin25.global.Type.ModelNotFoundException
 import com.example.kotlin25.like.model.Like
 import com.example.kotlin25.like.repository.PostLikeRepository
 import com.example.kotlin25.post.repository.PostRepository
-import com.example.kotlin25.repository.MemberRepository
+import com.example.kotlin25.member.repository.MemberRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
