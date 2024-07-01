@@ -1,5 +1,7 @@
 package com.example.kotlin25.config
 
+import com.example.kotlin25.config.jwt.CustomAuthenticationEntryPoint
+import com.example.kotlin25.config.jwt.JwtAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
@@ -7,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector
 
@@ -14,6 +17,8 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector
 @EnableWebSecurity
 @EnableMethodSecurity
 class SecurityConfig(
+    private val jwtAuthenticationFilter: JwtAuthenticationFilter, //필터 등록
+    private val authenticationEntryPoint: CustomAuthenticationEntryPoint
 ) {
     @Bean
     fun filterChain(http: HttpSecurity,introspector: HandlerMappingIntrospector): SecurityFilterChain {
@@ -36,7 +41,12 @@ class SecurityConfig(
                         .apply { setServletPath("/h2-console") }).permitAll()
                     .anyRequest().authenticated()
             }
+
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .exceptionHandling {
+                it.authenticationEntryPoint(authenticationEntryPoint)
+            }
 
             .build()
     }

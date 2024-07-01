@@ -38,8 +38,9 @@ class JwtPlugin (
             .add(mapOf( "nickname" to nickname)) //사용자 지정 클레임을 추가 - 닉네임
             .build()
 
-        val now = Instant.now()
+
         val key = Keys.hmacShaKeyFor(secret.toByteArray(StandardCharsets.UTF_8))
+        val now = Instant.now()
 
         return Jwts.builder()
             .subject(subject)

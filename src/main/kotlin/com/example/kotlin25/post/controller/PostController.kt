@@ -6,6 +6,9 @@ import com.example.kotlin25.post.dto.UpdatePostRequest
 import com.example.kotlin25.post.service.PostService
 
 import jakarta.validation.Valid
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -15,6 +18,14 @@ import org.springframework.web.bind.annotation.*
 class PostController(
     private val postService: PostService
 ) {
+    @GetMapping("/search")
+    fun searchPostList(@RequestParam(name = "title") title: String): ResponseEntity<List<PostResponse>> {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(postService.searchPostList(title))
+    }
+
+
     @PostMapping
     fun createPost(
         @Valid @RequestBody request: CreatePostRequest
@@ -25,10 +36,13 @@ class PostController(
 
     @GetMapping()
     fun getAllPosts(
-    ): ResponseEntity<List<PostResponse>> {
+        @PageableDefault(size = 10, sort = ["id"]) pageable: Pageable,
+
+    ): ResponseEntity<Page<PostResponse>> {
+
         return ResponseEntity
             .status(HttpStatus.OK)
-            .body(postService.getAllPosts())
+            .body(postService.getPaginatedPostList(pageable))
     }
 
     @GetMapping("/{postId}")

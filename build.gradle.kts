@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
     kotlin("plugin.noarg") version "1.8.22"
+    kotlin("kapt") version "1.8.22" // 추가!
 }
 
  noArg {
@@ -49,6 +50,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("com.querydsl:querydsl-jpa:$queryDslVersion:jakarta") // 추가!
+    kapt("com.querydsl:querydsl-apt:$queryDslVersion:jakarta") // 추가!
 
 
 

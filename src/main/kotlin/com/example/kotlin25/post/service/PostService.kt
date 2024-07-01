@@ -1,5 +1,6 @@
 package com.example.kotlin25.post.service
 
+import com.example.kotlin25.config.aop.StopWatch
 import com.example.kotlin25.config.sercurity.UserPrincipal
 import com.example.kotlin25.global.Type.ModelNotFoundException
 import com.example.kotlin25.post.dto.CreatePostRequest
@@ -9,6 +10,8 @@ import com.example.kotlin25.post.model.Post
 import com.example.kotlin25.post.repository.PostRepository
 import com.example.kotlin25.member.repository.MemberRepository
 import jakarta.persistence.EntityNotFoundException
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
@@ -20,6 +23,7 @@ import java.time.ZonedDateTime
 class PostService (
     private val postRepository: PostRepository,
     private val memRepository: MemberRepository,
+
     ) {
 
     fun createPost(request: CreatePostRequest): PostResponse {
@@ -44,7 +48,7 @@ class PostService (
 
         return postRepository.findAllByOrderByCreatedAtDesc().map { it.toResponse() }
     }
-
+@StopWatch
     fun getPost(postId: Long): PostResponse {
         val post = postRepository.findByIdOrNull(postId)?: throw EntityNotFoundException("Post not found with id $postId")
 
@@ -71,6 +75,18 @@ class PostService (
         val principal = authentication.principal as UserPrincipal
         val member = memRepository.findByNickname(principal.nickname)
         postRepository.deleteAll()
+    }
+
+    fun searchPostList(title: String): List<PostResponse> {
+        return postRepository.searchByPostListByTitle(title).map { it.toResponse() }
+    }
+
+    fun getPaginatedPostList(pageable: Pageable): Page<PostResponse>? {
+        return postRepository.findByPageable(pageable).map { it.toResponse() }
+
+
+
+
     }
 
 }
